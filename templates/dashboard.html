@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block title %}Dashboard{% endblock title %}
+
+{% block content %}
+
+    <h1>Dashboard</h1>
+    <h2>Orders</h2>
+    {% for order in orders %}
+        <div>
+            <h3>Order id: {{order.id}}</h3>
+            <p>Product Name: {{order.product_name}}</p>
+            <p>Order class: {{order.class_type}}</p>
+            <p>Order price: {{order.price}}</p>
+            <p>Order quantity: {{order.quantity}}</p>
+            <a href="{% url 'update_order' order.id%}">Update</a>
+            <a href="{% url 'delete_order' order.id%}">Delete</a>
+        </div>
+    {% endfor %}
+    <h2>Users</h2>
+    {% for user in users %}
+        <div>
+            <h3>{{user.username}}</h3>
+            <p>{{user.email}}</p>
+        </div>
+    {% endfor %}
+
+
+{% endblock content %}

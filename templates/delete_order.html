@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block title %}Delete Confirmation{% endblock title %}
+
+{% block content %}
+
+    <p>Are you sure you want to delete the order id : {{order.id}}</p>
+    <form action="{% url 'delete_order' order.id%}" method="POST"> {% csrf_token %}
+        <input type="submit" value="Confirm">
+    </form>
+    <a href={% url 'dashboard' %}>No</a>
+
+{% endblock content %}
